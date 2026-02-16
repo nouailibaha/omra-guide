@@ -1,7 +1,0 @@
-- review one more all the steps and behavior (done)
-- change text and presentation ()
-- ask for what is the best platform to host and deploy
-- test on my phone
-- install pwa and test again
-- test offline mode
-- add duaa (optional)

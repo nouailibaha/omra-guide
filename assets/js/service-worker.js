@@ -3,11 +3,11 @@ const CACHE_NAME = "omrah-guide-v1";
 const urlsToCache = [
   "/",
   "/index.html",
-  "/styles.css",
-  "/app.js",
+  "/assets/css/styles.css",
+  "/assets/js/app.js",
   "/manifest.json",
-  "/icon-192.png",
-  "/icon-512.png",
+  "/assets/images/icon-192.png",
+  "/assets/images/icon-512.png",
 ];
 
 // Install Service Worker
