@@ -1,0 +1,26 @@
+{
+  "name": "Guide Omrah - Mode Hors Ligne",
+  "short_name": "Omrah Guide",
+  "description": "Guide complet pour accomplir la Omrah avec instructions détaillées et invocations",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2c5f2d",
+  "theme_color": "#2c5f2d",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "lang": "fr",
+  "dir": "ltr"
+}

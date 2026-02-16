@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="theme-color" content="#2c5f2d" />
+    <meta
+      name="description"
+      content="Guide complet pour accomplir la Omrah - Mode hors ligne disponible"
+    />
+
+    <title>Omrah 19.02.26</title>
+
+    <!-- Kaaba Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕋</text></svg>"
+    />
+
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Preload fonts for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Header -->
+      <header class="app-header">
+        <div class="header-content">
+          <h1 class="app-title">🕋 Guide Omrah</h1>
+          <div class="offline-indicator" id="offlineIndicator">
+            <span class="status-dot"></span>
+            <span class="status-text">Hors ligne</span>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="app-main">
+        <!-- Category Selection View -->
+        <div class="category-view" id="categoryView">
+          <!-- Ihram Warning Banner (shown when in Ihram state) -->
+          <div class="ihram-warning-banner hidden" id="ihramWarningBanner">
+            <div class="ihram-warning-header">
+              <span class="ihram-warning-icon">⚠️</span>
+              <h3>Tu es en état d'Ihram</h3>
+              <span class="ihram-warning-close" id="ihramWarningClose">×</span>
+            </div>
+            <p class="ihram-warning-subtitle">
+              🛑 Rappel des interdictions importantes :
+            </p>
+            <ul class="ihram-warning-list">
+              <li>🚫 Toucher tes cheveux ou ta barbe</li>
+              <li>🚫 Mettre du parfum ou lingettes parfumées</li>
+              <li>🚫 Porter quoi que ce soit sur ta tête (hommes)</li>
+              <li>🚫 Couper tes ongles ou tes cheveux</li>
+              <li>🚫 Avoir des relations intimes</li>
+            </ul>
+            <p class="ihram-warning-reminder">
+              🤲 Continue à répéter la Talbiyah régulièrement, jusqu'à ce que tu
+              vois la Kaaba.
+            </p>
+          </div>
+
+          <div class="category-intro">
+            <h2>Choisissez une section</h2>
+            <p>Sélectionnez la partie du rituel que vous souhaitez consulter</p>
+          </div>
+          <div class="category-grid" id="categoryGrid">
+            <!-- Categories will be populated by JavaScript -->
+          </div>
+
+          <!-- Reset Progress Button for Category View -->
+          <button class="reset-btn" id="resetBtnCategory">
+            🔄 Réinitialiser la progression
+          </button>
+        </div>
+
+        <!-- Step View (initially hidden) -->
+        <div class="step-view hidden" id="stepView">
+          <!-- Section Header -->
+          <div class="section-header" id="sectionHeader">
+            <div class="section-icon">📍</div>
+            <div class="section-info">
+              <h2 class="section-title" id="sectionTitle">À la maison</h2>
+              <p class="section-subtitle" id="sectionSubtitle">
+                Préparation avant le départ
+              </p>
+            </div>
+          </div>
+
+          <!-- Step Card -->
+          <div class="step-card" id="stepCard">
+            <div class="step-number" id="stepNumber">Étape 1/28</div>
+
+            <div class="step-content" id="stepContent">
+              <!-- Content will be dynamically inserted -->
+            </div>
+
+            <!-- Counter Section (for Tawaf and Sa'i) -->
+            <div class="counter-section hidden" id="counterSection">
+              <div class="counter-label" id="counterLabel">Tours effectués</div>
+              <div class="counter-display">
+                <button class="counter-btn counter-minus" id="counterMinus">
+                  −
+                </button>
+                <div class="counter-value" id="counterValue">0/7</div>
+                <button class="counter-btn counter-plus" id="counterPlus">
+                  +
+                </button>
+              </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+              <button class="btn btn-secondary" id="prevBtn" disabled>
+                <span>← Précédent</span>
+              </button>
+              <button class="btn btn-primary" id="nextBtn">
+                <span id="nextBtnText">Suivant →</span>
+              </button>
+            </div>
+
+            <!-- Back to Categories Button -->
+            <button class="btn btn-outline" id="backToCategoriesBtn">
+              ← Retour aux catégories
+            </button>
+
+            <!-- Reset Category Button -->
+            <button class="btn btn-warning" id="resetCategoryBtn">
+              🔄 Réinitialiser cette section
+            </button>
+          </div>
+
+          <!-- Progress Summary -->
+          <div class="progress-summary">
+            <div class="summary-item">
+              <span class="summary-label">Section</span>
+              <span class="summary-value" id="currentSection">A</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Progression</span>
+              <span class="summary-value" id="progressPercent">0%</span>
+            </div>
+          </div>
+        </div>
+        <!-- End of Step View -->
+      </main>
+
+      <!-- Footer -->
+      <footer class="app-footer">
+        <p>Qu'Allah accepte ta Omrah LCZ 🤲</p>
+      </footer>
+    </div>
+
+    <!-- Modern Modal Dialog -->
+    <div class="modal-overlay hidden" id="modalOverlay">
+      <div class="modal-container">
+        <div class="modal-icon" id="modalIcon"></div>
+        <h3 class="modal-title" id="modalTitle"></h3>
+        <p class="modal-message" id="modalMessage"></p>
+        <div class="modal-buttons" id="modalButtons">
+          <!-- Buttons dynamically added -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Install Prompt (PWA) -->
+    <div class="install-prompt hidden" id="installPrompt">
+      <div class="install-content">
+        <h3>Installer l'application</h3>
+        <p>
+          Installez ce guide sur votre écran d'accueil pour un accès hors ligne
+        </p>
+        <div class="install-buttons">
+          <button class="btn btn-primary" id="installBtn">Installer</button>
+          <button class="btn btn-secondary" id="dismissBtn">Plus tard</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="sw-register.js"></script>
+  </body>
+</html>
