@@ -1,13 +1,14 @@
 // Service Worker for Offline Functionality
-const CACHE_NAME = "omrah-guide-v1";
+const CACHE_NAME = "omrah-guide-v2";
 const urlsToCache = [
-  "/",
-  "/index.html",
-  "/assets/css/styles.css",
-  "/assets/js/app.js",
-  "/manifest.json",
-  "/assets/images/icon-192.png",
-  "/assets/images/icon-512.png",
+  "./",
+  "./index.html",
+  "./assets/css/styles.css",
+  "./assets/js/app.js",
+  "./manifest.json",
+  "./assets/images/icon-192.png",
+  "./assets/images/icon-512.png",
+  "./assets/images/kaaba-icon.svg",
 ];
 
 // Install Service Worker
@@ -72,7 +73,7 @@ self.addEventListener("fetch", (event) => {
         })
         .catch(() => {
           // If fetch fails and no cache, return offline page
-          return caches.match("/index.html");
+          return caches.match("./index.html");
         });
     }),
   );
