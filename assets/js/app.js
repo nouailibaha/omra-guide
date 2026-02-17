@@ -1072,8 +1072,11 @@ function resetProgress() {
           ihramBannerDismissed = false;
           localStorage.removeItem("omrahProgress");
           sessionStorage.removeItem("omrahProgress");
-          // Refresh the page after reset
-          window.location.reload();
+          // Reset UI without page reload (works offline)
+          initializeCategoryProgress();
+          showCategoryView();
+          renderCategoryView();
+          hideModal();
         },
       },
     ],
